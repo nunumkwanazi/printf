@@ -1,1 +1,0 @@
-printf: collaborative project
