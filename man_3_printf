@@ -1,0 +1,86 @@
+MAN_3_PRINTF(3)                     Library Functions Manual                     MAN_3_PRINTF(3)
+
+NAME
+       _printf - produce output according to a format
+
+SYNOPSIS
+       #include "holberton.h"
+
+       int _printf(const char *format, ...);
+
+DESCRIPTION
+       The _printf() function produces output according to a format as described below. The
+       function writes the output to stdout, the standard output stream.
+
+RETURN VALUE
+       Upon successful return, these functions return the number of characters printed
+       (excluding the null byte used to end output to strings). If an output error is
+       encountered, a negative value is returned.
+
+FORMAT OF THE FORMAT STRING
+       The format string is a character string, beginning and ending in its initial shift
+       state, if any. The format string is composed of zero or more directives: ordinary
+       characters (not %), which are copied unchanged to the output stream; and conversion
+       specifications, each of which results in fetching zero or more subsequent arguments.
+       Each conversion specification is introduced by the % character. The arguments must
+       correspond properly (after type promotion) with the conversion specifier. By
+       default, the arguments are used in the order given, where each '*' and each conversion
+       specification consumes the next argument from the argument list.  If the format is
+       exhausted while arguments remain, the excess arguments are evaluated but are ignored.
+
+       The conversion specifiers and their meanings are:
+
+       d, i   The int argument is converted to signed decimal notation.
+
+       b      The unsigned int argument is converted to binary.
+
+       u      The unsigned int argument is converted to unsigned decimal notation.
+
+       o      The unsigned int argument is converted to octal notation.
+
+       x, X   The unsigned int argument is converted to hexadecimal notation.
+              The letters "abcdef" are used for x conversions; the letters "ABCDEF" are used
+              for X conversions.
+
+       s      The char * argument is expected to be a pointer to an array of character type
+              (pointer to a string). Characters from the array are written up to (but not
+              including) a terminating null byte ('\0'); if a precision is specified, no more
+              than the number specified are written. If a precision is given, no null byte
+              need be present; if the precision is not specified, or is greater than the size
+              of the array, the array must contain a terminating null byte.
+
+       c      The int argument is converted to an unsigned char, and the resulting character
+              is written.
+
+       %      A '%' is written. No argument is converted. The complete conversion specification
+              is '%%'.
+
+EXAMPLES
+       To print a string:
+              _printf("%s", "Hello, Holberton"); -> "Hello, Holberton"
+
+       To print a character:
+              _printf("%c", 'H'); -> "H"
+
+       To print an integer:
+              _printf("%d", 123); -> "123"
+
+       To print a binary:
+              _printf("%b", 98); -> "1100010"
+
+       To print an unsigned integer:
+              _printf("%u", 4294967295); -> "4294967295"
+
+       To print an octal:
+              _printf("%o", 98); -> "142"
+
+       To print a hexadecimal:
+              _printf("%x", 98); -> "62"
+              _printf("%X", 98); -> "62"
+
+SEE ALSO
+       printf(3)
+
+STANDARDS
+       The _printf() function conforms to ISO/
+
